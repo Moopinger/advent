@@ -62,7 +62,7 @@ func newRound(round_info string) Round {
 
 	return ro
 }
-
+//I really need to come up with a better function name here
 func getInt(input_string string) string {
 
 	var id_string string = ""
