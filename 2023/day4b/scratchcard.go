@@ -77,7 +77,7 @@ func (s *ScratchCard) CreateCopy() {
 func NewScratchCard(card_info string) ScratchCard {
 
 	counter := 0
-	card_info = card_info[7:]
+	card_info = card_info[9:]
 
 	cards_results := strings.Split(card_info, " | ")
 
