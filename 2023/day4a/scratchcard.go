@@ -7,7 +7,6 @@ import (
 )
 
 type ScratchCard struct {
-	Id             int
 	WinningNumbers []int
 	Guesses        []int
 	Points         int
@@ -73,10 +72,7 @@ func bulkAddScratchCards(scratchcards []string) []ScratchCard {
 func NewScratchCard(card_info string) ScratchCard {
 
 	counter := 0
-	card_info = card_info[5:]
-	card_id := getInt(card_info)
-	strip_length := len(strconv.Itoa(card_id)) + 1
-	card_info = card_info[strip_length:]
+	card_info = card_info[9:]
 
 	cards_results := strings.Split(card_info, " | ")
 
@@ -99,7 +95,6 @@ func NewScratchCard(card_info string) ScratchCard {
 	converted_score := getScore(counter)
 
 	s := ScratchCard{
-		Id:             card_id,
 		WinningNumbers: winning_numbers_int,
 		Guesses:        guesses_int,
 		Points:         converted_score,
