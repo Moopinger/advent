@@ -32,15 +32,6 @@ func NewRule(dst int, src int, length int) Rule {
 	return r
 }
 
-func isRuneNumber(char rune) bool {
-
-	if _, err := strconv.Atoi(string(char)); err == nil {
-		return true
-	} else {
-		return false
-	}
-}
-
 func (m *Mapping) Convertit(seed_id int) int {
 	var result int
 
@@ -72,16 +63,6 @@ func NewMapping(name string, rules []Rule) Mapping {
 	}
 
 	return m
-}
-
-func NewConversionTable() []int {
-	var numbers []int
-
-	for i := 0; i < 100; i++ {
-		numbers = append(numbers, i)
-	}
-
-	return numbers
 }
 
 func NewAlmanac(almanac_data []string) Almanac {
