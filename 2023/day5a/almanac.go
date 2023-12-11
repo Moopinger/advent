@@ -82,6 +82,8 @@ func NewAlmanac(almanac_data []string) Almanac {
 	almanac_data = almanac_data[2:]
 	almanac_single_string := strings.Join(almanac_data, "\n")
 	almanac_conversions := strings.Split(almanac_single_string, "\n\n")
+	//strip empty list item Thanks additional
+	almanac_conversions = almanac_conversions[:len(almanac_conversions)-1]
 
 	for _, almanac_conversion := range almanac_conversions {
 
@@ -95,27 +97,24 @@ func NewAlmanac(almanac_data []string) Almanac {
 
 		for i := 1; i < mapping_length; i++ {
 			//add this because of additional line read from text file
-			if almanac_conversion[i] != "" {
-				conversion_values_string := strings.Split(almanac_conversion[i], " ")
+			conversion_values_string := strings.Split(almanac_conversion[i], " ")
 
-				dest_range, _ := strconv.Atoi(conversion_values_string[0])
-				src_range, _ := strconv.Atoi(conversion_values_string[1])
-				range_length, _ := strconv.Atoi(conversion_values_string[2])
+			dest_range, _ := strconv.Atoi(conversion_values_string[0])
+			src_range, _ := strconv.Atoi(conversion_values_string[1])
+			range_length, _ := strconv.Atoi(conversion_values_string[2])
 
-				myRule := NewRule(dest_range, src_range, range_length)
+			myRule := NewRule(dest_range, src_range, range_length)
 
-				rules = append(rules, myRule)
+			rules = append(rules, myRule)
 
-				//full := fmt.Sprintf("dest_range = %d src_range = %d chunk size is %d", dest_range, src_range, range_length)
+			//full := fmt.Sprintf("dest_range = %d src_range = %d chunk size is %d", dest_range, src_range, range_length)
 
-				//modifications = append(modifications, full)
-			}
+			//modifications = append(modifications, full)
 		}
 
-		if mapping_name != "" {
-			myMapping := NewMapping(mapping_name, rules)
-			mappings = append(mappings, myMapping)
-		}
+		myMapping := NewMapping(mapping_name, rules)
+		mappings = append(mappings, myMapping)
+
 	}
 
 	a := Almanac{
