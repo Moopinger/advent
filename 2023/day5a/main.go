@@ -26,10 +26,12 @@ func main() {
 
 	for _, seed_id := range myAlmanac.Seeds {
 
-		fmt.Printf("[+] Seed Value is: %d\n", seed_id)
+		//fmt.Printf("[+] Seed Value is: %d\n", seed_id)
 		for _, mapping := range myAlmanac.Mappings {
 
+			fmt.Printf("[+] First Value is: %d ", seed_id)
 			seed_id = mapping.Convertit(seed_id)
+			fmt.Printf("[+] Converted is: %d\n", seed_id)
 
 			//fmt.Println(mapping)
 			//fmt.Printf("converted value for %s is: %d\n", mapping.Name, seed_id)
@@ -37,6 +39,7 @@ func main() {
 		}
 
 		//fmt.Printf("converted value is: %d\n", seed_id)
+		fmt.Printf("[+] Final seed value.: %d\n", seed_id)
 		answers = append(answers, seed_id)
 
 	}

@@ -80,7 +80,7 @@ func NewAlmanac(almanac_data []string) Almanac {
 	}
 
 	almanac_data = almanac_data[2:]
-	almanac_single_string := strings.Join(almanac_data, "\n")
+	almanac_single_string := strings.Join(almanac_data, "\n") + "\n"
 	almanac_conversions := strings.Split(almanac_single_string, "\n\n")
 	//strip empty list item Thanks additional
 	almanac_conversions = almanac_conversions[:len(almanac_conversions)-1]
