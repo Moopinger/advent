@@ -26,24 +26,14 @@ func main() {
 	for pointer != "ZZZ" {
 
 		for _, direction := range myMap.Pattern {
-			for _, node := range myMap.Nodes {
-				if node.Name == pointer {
-					if string(direction) == "L" {
-						move_counter += 1
-						pointer = node.Left
-						break
-					} else {
-						move_counter += 1
-						pointer = node.Right
-						break
-					}
-				}
+			move_counter += 1
+			node := myMap.Nodes[pointer]
+			if string(direction) == "L" {
+				pointer = node.Left
+			} else {
+				pointer = node.Right
 			}
-
 		}
-
 	}
-
 	fmt.Printf("[+]Z Solved. Took %d moves\n", move_counter)
-
 }

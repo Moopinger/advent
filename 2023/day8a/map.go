@@ -1,10 +1,12 @@
 package main
 
-import "strings"
+import (
+	"strings"
+)
 
 type Map struct {
 	Pattern string //RLL
-	Nodes   []Node
+	Nodes   map[string]Node
 }
 
 type Node struct {
@@ -14,8 +16,9 @@ type Node struct {
 }
 
 func NewMap(map_data []byte) Map {
-	var nodes []Node
+	//var nodes []Node
 	var pattern string
+	nodes := make(map[string]Node)
 
 	data_lines := strings.Split(string(map_data), "\n")
 
@@ -25,7 +28,8 @@ func NewMap(map_data []byte) Map {
 
 	for _, node := range node_data {
 		myNode := newNode(node)
-		nodes = append(nodes, myNode)
+		nodes[myNode.Name] = myNode
+		//nodes = append(nodes, myNode)
 
 	}
 
